@@ -1,7 +1,16 @@
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 import React from 'react'
 
-export const HomePage = () => {
+const HomePage = () => {
   return (
-    <div>HomePage</div>
+<Button asChild variant={'outline'}>
+<Link href={'/documents/:documentId'}>
+Create a doc
+</Link>
+</Button>
+
   )
 }
+
+export default HomePage
