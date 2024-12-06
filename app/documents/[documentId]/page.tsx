@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Editor } from "./editor"
+import ToolBar from "./toolbar"
 interface DocumentIdPageProps {
     params: Promise<{ documentId: string }>
 }
@@ -7,6 +8,7 @@ interface DocumentIdPageProps {
 const DocumentIdPage = async ({ params }: DocumentIdPageProps) => {
     return (
        <div className="min-h-screen bg-[#FAFBFD]">
+        <ToolBar/>
         <Editor/>
        </div> 
     )
