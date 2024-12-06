@@ -1,11 +1,14 @@
-import { Tiptap } from "./editor"
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Editor } from "./editor"
 interface DocumentIdPageProps {
     params: Promise<{ documentId: string }>
 }
 
 const DocumentIdPage = async ({ params }: DocumentIdPageProps) => {
     return (
-        <Tiptap />
+       <div className="min-h-screen bg-[#FAFBFD]">
+        <Editor/>
+       </div> 
     )
 }
 
