@@ -5,7 +5,7 @@ import React from 'react'
 const HomePage = () => {
   return (
 <Button asChild variant={'outline'}>
-<Link href={'/documents/:documentId'}>
+<Link href={'/documents/:123'}>
 Create a doc
 </Link>
 </Button>

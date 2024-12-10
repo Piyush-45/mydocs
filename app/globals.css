@@ -3,9 +3,22 @@
 @tailwind utilities;
 
 :root {
- --background: #ffffff;
- --foreground: #171717;
+  --background: 0 0% 100%;
+  --foreground: 220 14% 20%;
+  --muted: 220 14% 96%;
+  --muted-foreground: 220 14% 30%;
+  --primary: 240 80% 60%;
+  --primary-foreground: 240 80% 90%;
+  --secondary: 200 60% 50%;
+  --secondary-foreground: 200 60% 90%;
+  --destructive: 0 70% 60%;
+  --destructive-foreground: 0 70% 90%;
+  --border: 220 14% 75%;
+  --input: 220 14% 88%;
+  --ring: 240 60% 70%;
+  --radius: 8px;
 }
+
 
 body {
  color: var(--foreground);
@@ -171,4 +184,30 @@ img {
       outline: 3px solid var(--purple);
     }
   }
+}
+
+
+
+/* Global hover effect */
+.menubar-trigger,
+.menubar-item,
+.menubar-sub-trigger {
+  background-color: white;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.menubar-trigger:hover,
+.menubar-item:hover,
+.menubar-sub-trigger:hover {
+  background-color: #f4f4f4; /* Light gray background */
+  color: #000; /* Dark text for contrast */
+  cursor: pointer;
+}
+
+/* Active or focused state (optional) */
+.menubar-trigger:focus,
+.menubar-item:focus,
+.menubar-sub-trigger:focus {
+  outline: none;
+  background-color: #e2e8f0; /* Slightly darker gray */
 }
