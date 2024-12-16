@@ -17,15 +17,16 @@ import {
 } from "@/components/ui/menubar";
 
 import {
-  BoldIcon, FileIcon, FileJsonIcon, FilePenIcon, 
-  FilePlusIcon, FileTextIcon, GlobeIcon, ItalicIcon, 
-  PrinterIcon, Redo2Icon, Strikethrough, TextIcon, 
-  TrashIcon, UnderlineIcon, Undo2Icon 
+  BoldIcon, FileIcon, FileJsonIcon, FilePenIcon,
+  FilePlusIcon, FileTextIcon, GlobeIcon, ItalicIcon,
+  PrinterIcon, Redo2Icon, Strikethrough, TextIcon,
+  TrashIcon, UnderlineIcon, Undo2Icon
 } from 'lucide-react';
 
 import { BsFilePdf } from 'react-icons/bs';
 import { useEditorStore } from '@/app/store/user-editor-store'
 import { onSaveHTML, onSaveJSON, onSaveText } from './downloadingMethods'
+import { OrganizationSwitcher, UserButton } from '@clerk/nextjs'
 
 export const Navbar = () => {
   const { editor } = useEditorStore()
@@ -68,27 +69,27 @@ export const Navbar = () => {
                       <FileIcon className='size-4 mr-2' /> Download
                     </MenubarSubTrigger>
                     <MenubarSubContent>
-                      <MenubarItem 
-                        className='menubar-item' 
-                        onClick={()=>onSaveHTML(editor)}
+                      <MenubarItem
+                        className='menubar-item'
+                        onClick={() => onSaveHTML(editor)}
                       >
                         <GlobeIcon className='size-4 mr-2' /> HTML
                       </MenubarItem>
-                      <MenubarItem 
-                        className='menubar-item' 
-                        onClick={()=>onSaveJSON(editor)}
+                      <MenubarItem
+                        className='menubar-item'
+                        onClick={() => onSaveJSON(editor)}
                       >
                         <FileJsonIcon className='size-4 mr-2' /> JSON
                       </MenubarItem>
-                      <MenubarItem 
-                        className='menubar-item' 
+                      <MenubarItem
+                        className='menubar-item'
                         onClick={() => window.print()}
                       >
                         <BsFilePdf className='size-4 mr-2' /> PDF
                       </MenubarItem>
-                      <MenubarItem 
-                        className='menubar-item' 
-                        onClick={()=>onSaveText(editor)}
+                      <MenubarItem
+                        className='menubar-item'
+                        onClick={() => onSaveText(editor)}
                       >
                         <FileTextIcon className='size-4 mr-2' /> Text
                       </MenubarItem>
@@ -98,7 +99,7 @@ export const Navbar = () => {
                   <MenubarSeparator />
 
                   <MenubarItem onClick={() => window.print()} className='menubar-item'>
-                    <PrinterIcon className='size-4 mr-2' /> Print 
+                    <PrinterIcon className='size-4 mr-2' /> Print
                     <MenubarShortcut>⌘ P</MenubarShortcut>
                   </MenubarItem>
                 </MenubarContent>
@@ -108,19 +109,19 @@ export const Navbar = () => {
               <MenubarMenu>
                 <MenubarTrigger className="menubar-trigger">Edit</MenubarTrigger>
                 <MenubarContent>
-                  <MenubarItem 
-                    className='menubar-item' 
+                  <MenubarItem
+                    className='menubar-item'
                     onClick={() => editor?.chain().focus().undo().run()}
                   >
-                    <Undo2Icon className='size-4 mr-2' /> Undo 
+                    <Undo2Icon className='size-4 mr-2' /> Undo
                     <MenubarShortcut>⌘ Z</MenubarShortcut>
                   </MenubarItem>
 
-                  <MenubarItem 
-                    className='menubar-item' 
+                  <MenubarItem
+                    className='menubar-item'
                     onClick={() => editor?.chain().focus().redo().run()}
                   >
-                    <Redo2Icon className='size-4 mr-2' /> Redo 
+                    <Redo2Icon className='size-4 mr-2' /> Redo
                     <MenubarShortcut>⌘ Y</MenubarShortcut>
                   </MenubarItem>
                 </MenubarContent>
@@ -144,7 +145,7 @@ export const Navbar = () => {
                         <MenubarShortcut>⌘ I</MenubarShortcut>
                       </MenubarItem>
                       <MenubarItem className='menubar-item'>
-                        <UnderlineIcon className="size-4 mr-2" /> Underline 
+                        <UnderlineIcon className="size-4 mr-2" /> Underline
                         <MenubarShortcut>⌘ U</MenubarShortcut>
                       </MenubarItem>
                       <MenubarItem className='menubar-item'>
@@ -154,10 +155,21 @@ export const Navbar = () => {
                   </MenubarSub>
                 </MenubarContent>
               </MenubarMenu>
-
             </Menubar>
           </div>
         </div>
+
+      </div>
+      <div className='flex items-center mr-4'>
+        <div className="flex gap-3 items-center pl-6">
+          <OrganizationSwitcher
+            afterCreateOrganizationUrl='/'
+            afterLeaveOrganizationUrl='/'
+            afterSelectOrganizationUrl='/'
+            afterSelectPersonalUrl='/'
+          />
+        </div>
+        <UserButton />
       </div>
     </nav>
   )
